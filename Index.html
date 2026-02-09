@@ -2,116 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SD NERA - Super App</title>
+    <title>SD NERA - LIVE</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <style>
-        body { background-color: #050505; color: white; transition: all 0.3s ease; }
-        .glass { background: rgba(20, 20, 20, 0.8); backdrop-filter: blur(10px); }
-        .active-tab { color: #3b82f6; border-bottom: 2px solid #3b82f6; }
-    </style>
 </head>
-<body class="pb-24">
-
-    <!-- Header -->
-    <header class="p-5 flex justify-between items-center glass sticky top-0 z-50 border-b border-gray-800">
-        <h1 class="text-2xl font-black tracking-tighter italic text-blue-500">SD NERA</h1>
-        <button onclick="handleLogin()" id="loginBtn" class="bg-blue-600 px-5 py-1 rounded-full text-sm font-bold">Login</button>
-    </header>
-
-    <!-- Main Content Container -->
-    <div id="main-content" class="p-4 space-y-6">
-        
-        <!-- Dashboard Section (Default) -->
-        <div id="dashboard-sec" class="space-y-4">
-            <div class="bg-gradient-to-r from-blue-900 to-black p-6 rounded-3xl border border-blue-500/30">
-                <p class="text-gray-400 text-xs uppercase">Health Dashboard</p>
-                <h2 class="text-4xl font-bold mt-2">12,450 <span class="text-sm font-normal">Steps Today</span></h2>
-                <div class="mt-4 flex gap-4 text-xs font-bold">
-                    <span class="text-orange-400">🔥 450 Kcal</span>
-                    <span class="text-green-400">❤️ 72 BPM</span>
-                </div>
-            </div>
-
-            <div class="bg-gray-900 p-4 rounded-xl border border-gray-800">
-                <h3 class="text-blue-400 font-bold italic">Fitness Tip of the Day</h3>
-                <p class="text-sm text-gray-300 mt-1">Consistency is better than perfection. Keep moving!</p>
-            </div>
-        </div>
-
-        <!-- Shop Section (Hidden by default) -->
-        <div id="shop-sec" class="hidden grid grid-cols-2 gap-4">
-            <div class="bg-gray-900 p-3 rounded-2xl border border-gray-800 text-center">
-                <div class="h-24 bg-gray-800 rounded-lg mb-2"></div>
-                <p class="text-xs font-bold">SD Fit Watch</p>
-                <p class="text-blue-500 font-bold">₹2,999</p>
-                <button onclick="payNow(2999)" class="bg-white text-black w-full py-1 rounded mt-2 text-xs font-bold text-black uppercase">Buy</button>
-            </div>
-            <div class="bg-gray-900 p-3 rounded-2xl border border-gray-800 text-center">
-                <div class="h-24 bg-gray-800 rounded-lg mb-2"></div>
-                <p class="text-xs font-bold">SD Whey Pro</p>
-                <p class="text-blue-500 font-bold">₹1,499</p>
-                <button onclick="payNow(1499)" class="bg-white text-black w-full py-1 rounded mt-2 text-xs font-bold text-black uppercase">Buy</button>
-            </div>
-        </div>
+<body class="bg-black text-white flex items-center justify-center h-screen">
+    <div class="text-center">
+        <h1 class="text-5xl font-black text-blue-500 animate-pulse">SD NERA</h1>
+        <p class="mt-4 text-gray-400">System is Online | All Features Ready</p>
+        <button onclick="location.reload()" class="mt-8 bg-blue-600 px-6 py-2 rounded-full font-bold">Refresh App</button>
     </div>
-
-    <!-- Music Player (Floating) -->
-    <div class="fixed bottom-24 left-4 right-4 glass border border-blue-500/20 p-3 rounded-2xl flex items-center justify-between shadow-2xl">
-        <div class="flex items-center gap-3">
-            <div id="disc" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">🎵</div>
-            <div>
-                <p class="text-xs font-bold">NERA BEATS - VOL 1</p>
-                <p class="text-[10px] text-gray-500 uppercase">Track: Gym Motivation</p>
-            </div>
-        </div>
-        <button onclick="toggleMusic()" class="bg-white text-black p-2 rounded-full w-10 h-10 font-bold">II</button>
-    </div>
-
-    <!-- Bottom Nav -->
-    <nav class="fixed bottom-0 w-full glass border-t border-gray-800 p-4 flex justify-around">
-        <button onclick="switchTab('dashboard')" class="nav-item active-tab">Dashboard</button>
-        <button onclick="switchTab('shop')" class="nav-item text-gray-500">Shop</button>
-        <button onclick="switchTab('music')" class="nav-item text-gray-500">Music</button>
-    </nav>
-
-    <script>
-        // Tab Switching Logic
-        function switchTab(tab) {
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active-tab', 'text-gray-500'));
-            document.getElementById('dashboard-sec').classList.add('hidden');
-            document.getElementById('shop-sec').classList.add('hidden');
-            
-            if(tab === 'dashboard') {
-                document.getElementById('dashboard-sec').classList.remove('hidden');
-            } else if(tab === 'shop') {
-                document.getElementById('shop-sec').classList.remove('hidden');
-            }
-        }
-
-        // Music Logic
-        function toggleMusic() {
-            document.getElementById('disc').classList.toggle('animate-spin');
-            alert("SD NERA Music Player: Streaming Started...");
-        }
-
-        // Login Tracking Logic
-        function handleLogin() {
-            const user = prompt("Enter your name for SD NERA Tracking:");
-            if(user) {
-                document.getElementById('loginBtn').innerText = user;
-                alert("Welcome to SD NERA Universe!");
-                console.log("User Logged In: " + user); // Ye data Supabase mein jayege
-            }
-        }
-
-        // Payment Logic
-        function payNow(amt) {
-            alert("Connecting to Razorpay Secure Gateway for ₹" + amt);
-            // After successful payment
-            alert("Payment Successful! SD NERA will deliver your order soon.");
-        }
-    </script>
 </body>
 </html>
