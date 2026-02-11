@@ -1,130 +1,26 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SD NERA | THE SUPER APP</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;600&display=swap');
-        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; }
-        .nera-font { font-family: 'Orbitron', sans-serif; }
-        .glass { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); }
-        .gradient-text { background: linear-gradient(90deg, #3b82f6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .active-tab { color: #3b82f6; transform: scale(1.1); }
-    </style>
-</head>
-<body class="pb-32">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TODO: Set the document title to the name of your application -->
+    <title>Lovable App</title>
+    <meta name="description" content="Lovable Generated Project" />
+    <meta name="author" content="Lovable" />
 
-    <!-- Header -->
-    <header class="p-6 flex justify-between items-center sticky top-0 z-50 glass">
-        <h1 class="nera-font text-2xl font-black gradient-text">SD NERA</h1>
-        <div class="flex gap-4">
-            <i data-lucide="bell" class="w-6 h-6 text-gray-400"></i>
-            <div id="userProfile" class="w-8 h-8 rounded-full border-2 border-blue-500 flex items-center justify-center text-[10px] font-bold">U</div>
-        </div>
-    </header>
+    <!-- TODO: Update og:title to match your application name -->
+    <meta property="og:title" content="Lovable App" />
+    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
-    <div id="main-content" class="p-5 space-y-6">
-        <!-- Dashboard Section -->
-        <section id="dashboard-view" class="space-y-6">
-            <div class="glass p-6 rounded-[2rem] relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-20"><i data-lucide="activity" class="w-20 h-20"></i></div>
-                <p class="text-xs uppercase tracking-widest text-blue-400 font-bold">Health Metrics</p>
-                <h2 class="text-5xl font-black nera-font mt-2">10,245</h2>
-                <p class="text-sm text-gray-500">Steps Taken Today</p>
-                <div class="flex gap-6 mt-6">
-                    <div><p class="text-orange-500 font-bold">450</p><p class="text-[10px] text-gray-400 uppercase">Kcal</p></div>
-                    <div><p class="text-blue-500 font-bold">7.2</p><p class="text-[10px] text-gray-400 uppercase">Km</p></div>
-                    <div><p class="text-green-500 font-bold">112</p><p class="text-[10px] text-gray-400 uppercase">BPM</p></div>
-                </div>
-            </div>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Lovable" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
 
-            <h3 class="text-xl font-bold flex items-center gap-2 px-2"><i data-lucide="newspaper" class="w-5 h-5 text-blue-500"></i> SD Nera Blog</h3>
-            <div class="glass p-4 rounded-3xl">
-                <div class="h-40 bg-gray-900 rounded-2xl mb-4 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500&auto=format')] bg-cover"></div>
-                <h4 class="font-bold text-lg">Morning Bio-Hacking Tips</h4>
-                <p class="text-gray-400 text-xs mt-1">Enhance your energy with 5 simple hacks...</p>
-            </div>
-        </section>
-
-        <!-- Shop Section -->
-        <section id="shop-view" class="hidden grid grid-cols-2 gap-4">
-            <div class="glass p-3 rounded-3xl text-center">
-                <div class="aspect-square bg-gray-900 rounded-2xl mb-2 flex items-center justify-center"><i data-lucide="watch" class="w-12 h-12 text-blue-500"></i></div>
-                <p class="text-sm font-bold">NERA Watch V1</p>
-                <p class="text-blue-500 font-bold">₹4,999</p>
-                <button onclick="initiatePayment(4999)" class="bg-white text-black w-full py-2 rounded-xl mt-2 text-xs font-bold uppercase">Buy Now</button>
-            </div>
-            <div class="glass p-3 rounded-3xl text-center">
-                <div class="aspect-square bg-gray-900 rounded-2xl mb-2 flex items-center justify-center"><i data-lucide="zap" class="w-12 h-12 text-blue-500"></i></div>
-                <p class="text-sm font-bold">SD Protein</p>
-                <p class="text-blue-500 font-bold">₹2,499</p>
-                <button onclick="initiatePayment(2499)" class="bg-white text-black w-full py-2 rounded-xl mt-2 text-xs font-bold uppercase">Buy Now</button>
-            </div>
-        </section>
-    </div>
-
-    <!-- Music Player -->
-    <div class="fixed bottom-24 left-4 right-4 glass p-4 rounded-[2rem] flex items-center justify-between border-blue-500/30 shadow-[0_0_50px_rgba(59,130,246,0.2)]">
-        <div class="flex items-center gap-4">
-            <div id="music-disc" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center shadow-lg"><i data-lucide="music" class="text-white"></i></div>
-            <div>
-                <p class="text-sm font-black">SD NERA RADIO</p>
-                <p id="track-status" class="text-[10px] text-blue-400 font-bold">NOW PLAYING: PHONK MIX 01</p>
-            </div>
-        </div>
-        <button onclick="toggleMusic()" class="bg-white text-black p-3 rounded-full flex items-center justify-center"><i id="play-icon" data-lucide="play" class="w-6 h-6"></i></button>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] glass rounded-[2.5rem] p-3 flex justify-around items-center border-gray-800 shadow-2xl">
-        <button onclick="showSection('dashboard')" class="p-2 nav-btn active-tab"><i data-lucide="home"></i></button>
-        <button onclick="showSection('shop')" class="p-2 nav-btn text-gray-500"><i data-lucide="shopping-bag"></i></button>
-        <button onclick="showSection('shop')" class="p-2 nav-btn text-gray-500"><i data-lucide="credit-card"></i></button>
-        <button onclick="loginUser()" class="p-2 nav-btn text-gray-500"><i data-lucide="user-circle"></i></button>
-    </nav>
-
-    <script>
-        lucide.createIcons();
-        let isPlaying = false;
-
-        function showSection(id) {
-            document.getElementById('dashboard-view').classList.add('hidden');
-            document.getElementById('shop-view').classList.add('hidden');
-            document.getElementById(id + '-view').classList.remove('hidden');
-            
-            // Icon Styling
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active-tab', 'text-blue-500'));
-            event.currentTarget.classList.add('active-tab', 'text-blue-500');
-        }
-
-        function toggleMusic() {
-            isPlaying = !isPlaying;
-            const disc = document.getElementById('music-disc');
-            const icon = document.getElementById('play-icon');
-            if(isPlaying) {
-                disc.classList.add('animate-spin');
-                alert("Streaming SD NERA Beats...");
-            } else {
-                disc.classList.remove('animate-spin');
-            }
-        }
-
-        function initiatePayment(amt) {
-            alert("SD NERA SECURE CHECKOUT: Connecting for ₹" + amt);
-            // Real Razorpay trigger here
-        }
-
-        function loginUser() {
-            let name = prompt("SD NERA: Enter Access Key or Name:");
-            if(name) {
-                document.getElementById('userProfile').innerText = name.substring(0,1).toUpperCase();
-                alert("Tracking Synchronized for: " + name);
-            }
-        }
-    </script>
-</body>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
